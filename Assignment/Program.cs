@@ -1,9 +1,13 @@
-﻿namespace Assignment
+﻿using System.Globalization;
+using System.Runtime.InteropServices;
+
+namespace Assignment
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+
             #region First Project
 
             //Console.WriteLine("=== First Project ===");
@@ -35,13 +39,31 @@
 
             #region Second Project
 
-            Console.WriteLine("\n=== Second Project ===");
-            Console.WriteLine($"Add: { Maths.Add(10, 5)}");
-            Console.WriteLine($"Subtract: {Maths.Subtract(10, 5)}");
-            Console.WriteLine($"Multiply: {Maths.Multiply(10, 5)}");
-            Console.WriteLine($"Divide: { Maths.Divide(10, 5)}");
+            //Console.WriteLine("\n=== Second Project ===");
+            //Console.WriteLine($"Add: {Maths.Add(10, 5)}");
+            //Console.WriteLine($"Subtract: {Maths.Subtract(10, 5)}");
+            //Console.WriteLine($"Multiply: {Maths.Multiply(10, 5)}");
+            //Console.WriteLine($"Divide: {Maths.Divide(10, 5)}");
 
             #endregion
+
+            #region Third Prooject
+
+            //Console.WriteLine("\n=== Third Project ===");
+            //Duration D1 = new Duration(1, 10, 15);
+            //Console.WriteLine(D1);
+
+            //Duration D2 = new Duration(3600);
+            //Console.WriteLine(D2);
+
+            //Duration D3 = new Duration(7800);
+            //Console.WriteLine(D3);
+
+            //Duration D4 = new Duration(666);
+            //Console.WriteLine(D4);
+
+            #endregion
+
         }
     }
 }

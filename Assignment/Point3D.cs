@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace Assignment
 {
-    class Point3D : IComparable<Point3D>, ICloneable
+    internal class Point3D : IComparable<Point3D>, ICloneable
     {
+
+        #region Properties
+        
         public int X { get; set; }
         public int Y { get; set; }
         public int Z { get; set; }
 
+        #endregion
+
+        #region Constructors
+        
         public Point3D() : this(0, 0, 0) { }
         public Point3D(int x, int y, int z)
         {
@@ -20,20 +27,11 @@ namespace Assignment
             Z = z;
         }
 
+        #endregion
 
+        #region Methods
+        
         public override string ToString() => $"Point Coordinates: ({X}, {Y}, {Z})";
-
-        public override bool Equals(object obj)
-        {
-            if (obj is Point3D other)
-                return X == other.X && Y == other.Y && Z == other.Z;
-            return false;
-        }
-
-        public override int GetHashCode() => HashCode.Combine(X, Y, Z);
-
-        public static bool operator ==(Point3D p1, Point3D p2) => p1.Equals(p2);
-        public static bool operator !=(Point3D p1, Point3D p2) => !p1.Equals(p2);
 
         public int CompareTo(Point3D other)
         {
@@ -42,6 +40,9 @@ namespace Assignment
             return Y.CompareTo(other.Y);
         }
 
-        public object Clone() => new Point3D(X, Y, Z);
+        public object Clone() => new Point3D(X, Y, Z); 
+
+        #endregion
+
     }
 }
