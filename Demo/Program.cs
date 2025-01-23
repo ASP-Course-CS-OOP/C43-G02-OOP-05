@@ -36,7 +36,7 @@ namespace Demo
             //TypeA typeA = new TypeA();
             ////typeA.Print();//ERROR
             
-            //That's Because the "TypeA" implement "IType" not inherit from it.
+            //That's Because the "TypeA" implement "IType" not inherit from it [TypeA not inherit this default implemented method and not implemented it, so can't access it throw reference from "TypeA" that refer to object of type "TypeA"].
             //So it implement just signature methods not implement default implemented methods.
 
 
