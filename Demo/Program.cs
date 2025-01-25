@@ -175,7 +175,7 @@ namespace Demo
             //}
 
             //Console.WriteLine();
-            
+
             //foreach (var number in arr02)
             //{
             //    Console.Write(number + " "); // 100 2 3s
@@ -184,6 +184,30 @@ namespace Demo
             #endregion
 
             #endregion
+
+            #region Part 06 Why Clone Method Says it Makes a Shallow Copy
+
+            //// Clone() method with array of references [array of strings].
+
+            //string[] names01 = new string[] { "Amr", "Mona" };
+            //string[] names02 = new string[] { "Ahmed", "Yassmin" };
+
+            //Console.WriteLine($"names01.GetHashCode() : {names01.GetHashCode()}");         // names01.GetHashCode() : 54267293
+            //Console.WriteLine($"names02.GetHashCode() : {names02.GetHashCode()}");         // names02.GetHashCode() : 18643596
+
+            //names02 = (string[])names01.Clone(); // Deep Copy
+            //Console.WriteLine("After Deep Copy --> names02 = (string[])names01.Clone();"); // After Deep Copy --> names02 = (string[])names01.Clone();
+
+            //Console.WriteLine($"names01.GetHashCode() : {names01.GetHashCode()}");         // names01.GetHashCode() : 54267293
+            //Console.WriteLine($"names02.GetHashCode() : {names02.GetHashCode()}");         // names02.GetHashCode() : 33574638
+
+            //names02[0] = "Eslam";
+
+            //Console.WriteLine(names02[0]);// Eslam
+            //Console.WriteLine(names01[0]);// Amr
+
+            #endregion
+
         }
     }
 }
