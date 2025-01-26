@@ -1,4 +1,5 @@
-﻿using Demo.Interface_Example_01;
+﻿using Demo.Built_in_Interfaces;
+using Demo.Interface_Example_01;
 using Demo.Interface_Example_02;
 using Demo.Interface_Example_03;
 
@@ -205,6 +206,146 @@ namespace Demo
 
             //Console.WriteLine(names02[0]);// Eslam
             //Console.WriteLine(names01[0]);// Amr
+
+            #endregion
+
+            #region Part 07 Built-in Interfaces - ICloneable
+
+            #region Example01
+
+            //Employee employee01 = new Employee() { Id = 100, Name = "Ahmed", Salary = 8_000 };
+            //Employee employee02 = new Employee() { Id = 200, Name = "Omnia", Salary = 4_000 };
+
+            //Console.WriteLine($"employee01.GetHashCode(): {employee01.GetHashCode()}");// employee01.GetHashCode(): 54267293
+            //Console.WriteLine($"employee02.GetHashCode(): {employee02.GetHashCode()}");// employee02.GetHashCode(): 18643596
+
+            //Console.WriteLine("--------------------------------------------------");
+
+            //Console.WriteLine($"employee01 => {employee01} ");// employee01 => Id: 100, Name: Ahmed, Salary: 8000
+            //Console.WriteLine($"employee02 => {employee02} ");// employee02 => Id: 200, Name: Omnia, Salary: 4000
+
+            //Console.WriteLine();
+
+            //employee02 = (Employee)employee01.Clone();
+            //Console.WriteLine("After Deep Copy => ");
+            //Console.WriteLine();
+
+            //Console.WriteLine($"employee01.GetHashCode(): {employee01.GetHashCode()}");// employee01.GetHashCode(): 54267293
+            //Console.WriteLine($"employee02.GetHashCode(): {employee02.GetHashCode()}");// employee02.GetHashCode(): 33574638
+
+            //Console.WriteLine("--------------------------------------------------");
+
+            //Console.WriteLine($"employee01 => {employee01} ");// employee01 => Id: 100, Name: Ahmed, Salary: 8000
+            //Console.WriteLine($"employee02 => {employee02} ");// employee02 => Id: 100, Name: Ahmed, Salary: 8000
+
+            //employee02.Name = "Khalid";
+            //Console.WriteLine(employee01.Name);// Ahmed 
+
+            #endregion
+
+            #region Example 02 - Employee & Department Class
+
+            #region 01 - Without make cloning on Department inside clone() Method inside Employee Class - Modify on copy affect the original
+
+            //Employeee0 employee01 = new Employeee0() { Id = 100, Name = "Ahmed", Salary = 8_000, Department = new Department() { Code = 1000, Title = "Sales" } };
+            //Employeee0 employee02 = new Employeee0() { Id = 200, Name = "Omnia", Salary = 4_000, Department = new Department() { Code = 1500, Title = "HR" } };
+
+            //Console.WriteLine($"employee01.GetHashCode(): {employee01.GetHashCode()}");// employee01.GetHashCode(): 54267293
+            //Console.WriteLine($"employee02.GetHashCode(): {employee02.GetHashCode()}");// employee02.GetHashCode(): 18643596
+
+            //Console.WriteLine("--------------------------------------------------");
+
+            //Console.WriteLine($"employee01 => {employee01} ");// employee01 => Id: 100, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+            //Console.WriteLine($"employee02 => {employee02} ");// employee02 => Id: 200, Name: Omnia, Salary: 4000, Department => Code: 1500, Title: HR
+
+            //Console.WriteLine();
+
+            //employee02 = (Employeee0)employee01.Clone();
+            //Console.WriteLine("After Deep Copy => ");
+            //Console.WriteLine();
+
+            //Console.WriteLine($"employee01.GetHashCode(): {employee01.GetHashCode()}");// employee01.GetHashCode(): 54267293
+            //Console.WriteLine($"employee02.GetHashCode(): {employee02.GetHashCode()}");// employee02.GetHashCode(): 33574638
+
+            //Console.WriteLine("--------------------------------------------------");
+
+            //Console.WriteLine($"employee01 => {employee01} ");// employee01 => Id: 100, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+            //Console.WriteLine($"employee02 => {employee02} ");// employee02 => Id: 100, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+            //if (employee02.Department is not null)
+            //    employee02.Department.Title = "New Title";
+            //Console.WriteLine(employee01.Department.Title);// New Title   
+
+            #endregion
+
+            #region 02 - With make cloning on Department inside clone() Method inside Employee Class - modify on copy not affect the original
+
+            //Employeee employee01 = new Employeee() { Id = 100, Name = "Ahmed", Salary = 8_000, Department = new Department() { Code = 1000, Title = "Sales" } };
+            //Employeee employee02 = new Employeee() { Id = 200, Name = "Omnia", Salary = 4_000, Department = new Department() { Code = 1500, Title = "HR" } };
+
+            //Console.WriteLine($"employee01.GetHashCode(): {employee01.GetHashCode()}");// employee01.GetHashCode(): 54267293
+            //Console.WriteLine($"employee02.GetHashCode(): {employee02.GetHashCode()}");// employee02.GetHashCode(): 18643596
+
+            //Console.WriteLine("--------------------------------------------------");
+
+            //Console.WriteLine($"employee01 => {employee01} ");// employee01 => Id: 100, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+            //Console.WriteLine($"employee02 => {employee02} ");// employee02 => Id: 200, Name: Omnia, Salary: 4000, Department => Code: 1500, Title: HR
+
+            //Console.WriteLine();
+
+            //employee02 = (Employeee)employee01.Clone();
+            //Console.WriteLine("After Deep Copy => ");
+            //Console.WriteLine();
+
+            //Console.WriteLine($"employee01.GetHashCode(): {employee01.GetHashCode()}");// employee01.GetHashCode(): 54267293
+            //Console.WriteLine($"employee02.GetHashCode(): {employee02.GetHashCode()}");// employee02.GetHashCode(): 33574638
+
+            //Console.WriteLine("--------------------------------------------------");
+
+            //Console.WriteLine($"employee01 => {employee01} ");// employee01 => Id: 100, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+            //Console.WriteLine($"employee02 => {employee02} ");// employee02 => Id: 100, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+
+            //if (employee02.Department is not null)
+            //    employee02.Department.Title = "New Title";
+
+            //Console.WriteLine(employee01.Department.Title); // Sales
+
+            #endregion
+
+            #endregion
+
+            #region Example03 - DeepCopy Using Copy Constructor
+
+            //Employeee employee01 = new Employeee() { Id = 100, Name = "Ahmed", Salary = 8_000, Department = new Department() { Code = 1000, Title = "Sales" } };
+            //Employeee employee02 = new Employeee() { Id = 200, Name = "Omnia", Salary = 4_000, Department = new Department() { Code = 1500, Title = "HR" } };
+
+            //Console.WriteLine($"employee01.GetHashCode(): {employee01.GetHashCode()}");// employee01.GetHashCode(): 54267293
+            //Console.WriteLine($"employee02.GetHashCode(): {employee02.GetHashCode()}");// employee02.GetHashCode(): 18643596
+
+            //Console.WriteLine("--------------------------------------------------");
+
+            //Console.WriteLine($"employee01 => {employee01} ");// employee01 => Id: 100, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+            //Console.WriteLine($"employee02 => {employee02} ");// employee02 => Id: 200, Name: Omnia, Salary: 4000, Department => Code: 1500, Title: HR
+
+            //Console.WriteLine();
+
+            //employee02 = new Employeee(employee01);
+            //Console.WriteLine("After Deep Copy Using Copy Constructor => ");
+            //Console.WriteLine();
+
+            //Console.WriteLine($"employee01.GetHashCode(): {employee01.GetHashCode()}");// employee01.GetHashCode(): 54267293
+            //Console.WriteLine($"employee02.GetHashCode(): {employee02.GetHashCode()}");// employee02.GetHashCode(): 33574638
+
+            //Console.WriteLine("--------------------------------------------------");
+
+            //Console.WriteLine($"employee01 => {employee01} ");// employee01 => Id: 100, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+            //Console.WriteLine($"employee02 => {employee02} ");// employee02 => Id: 100, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+
+            //if (employee02.Department is not null)
+            //    employee02.Department.Title = "New Title";
+
+            //Console.WriteLine(employee01.Department.Title); // Sales
+
+            #endregion
 
             #endregion
 
