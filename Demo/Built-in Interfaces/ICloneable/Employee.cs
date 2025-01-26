@@ -8,10 +8,17 @@ namespace Demo.Built_in_Interfaces
 {
     internal class Employee : ICloneable
     {
+
+        #region Properties
+        
         public int Id { get; set; }
         public string? Name { get; set; }
         public decimal Salary { get; set; }
 
+        #endregion
+
+        #region Methods
+        
         public object Clone()
         {
             return new Employee()
@@ -25,6 +32,9 @@ namespace Demo.Built_in_Interfaces
         public override string ToString()
         {
             return $"Id: {Id}, Name: {Name}, Salary: {Salary}";
-        }
+        } 
+
+        #endregion
+
     }
 }
