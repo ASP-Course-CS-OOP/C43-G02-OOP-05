@@ -515,6 +515,18 @@ namespace Demo
 
             #endregion
 
+            #region part 10 - Sorting Array of integers Desc - using Array.Sort() Method By making new class that implement IComparer and provide new comparison behavior - sorting Desc
+
+            //int[] arr = new int[] { 5, 4, 7, 8, 9, 6, 3, 0, 2 };
+            //Array.Sort(arr, new IntDescComparer());
+
+            //foreach (var num in arr)
+            //{
+            //    Console.Write(num + " ");
+            //}
+
+            #endregion
+
         }
     }
 }
