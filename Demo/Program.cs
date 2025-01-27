@@ -1,4 +1,5 @@
 ﻿using Demo.Built_in_Interfaces;
+using Demo.Built_in_Interfaces.ICloneable___IComparable___IComparer;
 using Demo.Interface_Example_01;
 using Demo.Interface_Example_02;
 using Demo.Interface_Example_03;
@@ -22,6 +23,56 @@ namespace Demo
             series.Reset();
             Console.WriteLine();
         }
+
+        #endregion
+
+        #region Part 08 Built-In Interface ICompareable
+
+        #region Sorting Array of integers and Array of employees manually
+
+        public static void swap(ref int x, ref int y)
+        {
+            int z = x;
+            x = y;
+            y = z;
+        }
+
+        public static void swap(ref Employeee x, ref Employeee y)
+        {
+            Employeee z = x;
+            x = y;
+            y = z;
+        }
+        public static void sortEmpArrDesc(Employeee[] emps)
+        {
+            for (int i = 0; i < emps.Length - 1; i++)
+            {
+                for (int j = i + 1; j < emps.Length; j++)
+                {
+                    if (emps[i].Salary.CompareTo(emps[j].Salary) < 0)
+                    {
+                        swap(ref emps[i], ref emps[j]);
+                    }
+                }
+            }
+        }
+        public static void sortIntArrAsc(int[] numbers)
+        {
+            for (int i = 0; i < numbers.Length - 1; i++)
+            {
+                for (int j = i + 1; j < numbers.Length; j++)
+                {
+                    if (numbers[i].CompareTo(numbers[j]) > 0)
+                    {
+                        swap(ref numbers[i], ref numbers[j]);
+                    }
+                }
+            }
+        }
+
+        #endregion 
+
+
 
         #endregion
 
@@ -346,6 +397,121 @@ namespace Demo
             //Console.WriteLine(employee01.Department.Title); // Sales
 
             #endregion
+
+            #endregion
+
+            #region Part 08 Built-In Interface ICompareable
+
+            #region Sorting Array of integers and Array of employees manually
+
+            //int[] arr = new int[] { 9, 3, 1, 8, 10, 2, 7, 5, 4, 6 };
+            //sortIntArrAsc(arr);
+            //foreach (var item in arr)
+            //{
+            //    Console.Write(item + " ");
+            //}
+
+            //Console.WriteLine();
+
+            //Employeee[] emps = new Employeee[]
+            //{
+            //    new Employeee(){Id = 100,Name = "Ahmed",Salary = 10_000},
+            //    new Employeee(){Id = 200,Name = "Khalid",Salary = 90_000},
+            //    new Employeee(){Id = 300,Name = "Samy",Salary = 40_000}
+
+            //};
+
+            //sortEmpArrDesc(emps);
+
+            //foreach (var item in emps)
+            //{
+            //    Console.WriteLine(item);
+            //} 
+
+            #endregion
+
+            #region Example01 - Sorting Array of integers - Array.Sort(numbers);
+
+            //int[] numbers = new int[] { 1, 8, 7, 4, 5, 6, 9, 3, 10 };
+            //Array.Sort(numbers);//Sort() is class[Array] member method that sort the elements of array ASC and take parameter of type that implement the "Icompareable" interface,
+            //                    //so it will work here because "numbers" refer to object of type "int[]" and "Int" struct implement the "Icompareable" interface and provide implementation for CompareTo() method.
+
+            //foreach (int number in numbers)
+            //{
+            //    Console.Write(number + " ");// 1 3 4 5 6 7 8 9 10
+            //} 
+
+            #endregion
+
+            #region Example02 - Sorting Array of Employeees - Array.Sort(employees); - Before that "Employee" class implement "ICompareable" interface
+
+            //Employeee[] employees = new Employeee[]
+            //  {
+            //    new Employeee(){Id = 10,Name = "Ahmed",Salary = 8000},
+            //    new Employeee(){Id = 20,Name = "Omnia",Salary = 2000},
+            //    new Employeee(){Id = 30,Name = "Nadia",Salary = 10000},
+            //    new Employeee(){Id = 40,Name = "Omar",Salary = 6000},
+            //  };
+            //Array.Sort(employees);//Sort() is class[Array] member method that sort the elements of array ASC and take parameter of type that implement the "Icompareable" interface,
+            //                      //so it not will work here because "employees" refer to object of type "Employeee[]" and "Employeee" Class doesn't implement the "Icompareable" interface and not provide implementation for CompareTo() method,
+            //                      //so Employee not has comparing behavior between employees
+            //                      //So we need to let "Employeee" class implement the "Icompareable" interface and  provide the implementation of comparing between two Employee object based on what?.
+            //foreach (Employeee employee in employees)
+            //{
+            //    Console.WriteLine(employee);
+            //} 
+
+            #endregion
+
+            #region Example03 - Sorting Array of Employeees - Array.Sort(employees); - After that "Employee" class implement "ICompareable" interface
+
+            // Employeee[] employees = new Employeee[]
+            //{
+            //     new Employeee(){Id = 10,Name = "Ahmed",Salary = 8000,Department = new Department(){ Code = 1000,Title = "Sales"} },
+            //     new Employeee(){Id = 20,Name = "Omnia",Salary = 2000,Department = new Department(){ Code = 1500,Title = "HR"} },
+            //     new Employeee(){Id = 30,Name = "Nadia",Salary = 10000,Department = new Department(){ Code = 2000,Title = "Managing"} },
+            //     new Employeee(){Id = 40,Name = "Omar",Salary = 6000,Department = new Department(){ Code = 3000,Title = "Hiring"} },
+            //};
+
+            // Array.Sort(employees);
+
+            // foreach (Employeee employee in employees)
+            // {
+            //     Console.WriteLine(employee); // Id: 20, Name: Omnia, Salary: 2000, Department => Code: 1500, Title: HR
+            //                                  // Id: 40, Name: Omar, Salary: 6000, Department => Code: 3000, Title: Hiring
+            //                                  // Id: 10, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+            //                                  // Id: 30, Name: Nadia, Salary: 10000, Department => Code: 2000, Title: Managing
+            // }
+
+
+            // int result = employees[0].CompareTo("Eslam");
+            // Console.WriteLine(result);// Throw Exception => (Unable to cast object of type 'String' to type Employeee) Because inside CompareTo(object? obj)
+            //                           // we make casting from object? obj which refer to object of type string to Employee Which is can't be casted  
+
+            #endregion
+
+            #endregion
+
+            #region Part 09 Built-In Interface IComparer - Add new Comparison behavior to the Type Employee [Compare baed on Id].
+
+            //   Employeee[] employees = new Employeee[]
+            //{
+            //       new Employeee(){Id = 20,Name = "Omnia",Salary = 2000,Department = new Department(){ Code = 1500,Title = "HR"} },
+            //       new Employeee(){Id = 10,Name = "Ahmed",Salary = 8000,Department = new Department(){ Code = 1000,Title = "Sales"} },
+            //       new Employeee(){Id = 40,Name = "Omar",Salary = 6000,Department = new Department(){ Code = 3000,Title = "Hiring"} },
+            //       new Employeee(){Id = 30,Name = "Nadia",Salary = 10000,Department = new Department(){ Code = 2000,Title = "Managing"} },
+            //};
+
+            //   Array.Sort(employees,new EmployeeeComparer() );
+
+            //   //Sorted based on Id not salary
+            //   foreach (Employeee employee in employees)
+            //   {
+            //       Console.WriteLine(employee); // Id: 10, Name: Ahmed, Salary: 8000, Department => Code: 1000, Title: Sales
+            //                                    // Id: 20, Name: Omnia, Salary: 2000, Department => Code: 1500, Title: HR
+            //                                    // Id: 30, Name: Nadia, Salary: 10000, Department => Code: 2000, Title: Managing
+            //                                    // Id: 40, Name: Omar, Salary: 6000, Department => Code: 3000, Title: Hiring
+            //   }
 
             #endregion
 
