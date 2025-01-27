@@ -9,6 +9,9 @@ namespace Demo.Built_in_Interfaces.ICloneable___IComparable___IComparer
 {
     internal class IntDescComparer : IComparer // Sorting Array of integers Desc.
     {
+
+        #region Methods
+        
         public int Compare(object? x, object? y)
         {
 
@@ -17,6 +20,9 @@ namespace Demo.Built_in_Interfaces.ICloneable___IComparable___IComparer
 
             return ((X is null && y is null) ? 0 : (X is null) ? -1 : (Y is null) ? 1 : (X.Value > Y.Value) ? -1 : (X.Value < Y.Value) ? 1 : 0);
 
-        }
+        } 
+
+        #endregion
+
     }
 }
